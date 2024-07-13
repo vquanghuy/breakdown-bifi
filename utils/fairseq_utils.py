@@ -23,7 +23,7 @@ def fairseq_preprocess(src, tgt, destdir, trainpref=None, validpref=None, testpr
     cmd += additional_cmds
     subprocess.run(shlex.split(cmd))
 
-def fairseq_train(GPUs, preprocess_dir, save_dir, logfile, src, tgt, model='transformer',
+def fairseq_train(preprocess_dir, save_dir, logfile, src, tgt, model='transformer',
                   criterion='label_smoothed_cross_entropy',
                   encoder_layers=4, decoder_layers=4, encoder_embed_dim=256,
                   decoder_embed_dim=256, encoder_ffn_embed_dim=1024,
@@ -65,6 +65,7 @@ def fairseq_train(GPUs, preprocess_dir, save_dir, logfile, src, tgt, model='tran
                    --reset-dataloader \
                    --reset-meters "
         cmd += additional_cmds
+
         if logfile is not None:
             import socket, os
             with open(logfile, 'w') as outf:
@@ -73,13 +74,11 @@ def fairseq_train(GPUs, preprocess_dir, save_dir, logfile, src, tgt, model='tran
                 print ("screen: %s" % subprocess.check_output('echo $STY', shell=True).decode('utf'), file=outf)
                 outf.flush()
             cmd += f"  2>&1 | tee -a {logfile} "
-        if GPUs is not None:
-            cmd = 'CUDA_VISIBLE_DEVICES={}  {}'.format(GPUs, cmd)
 
         subprocess.run(cmd, shell=True)
 
 
-def fairseq_generate(GPUs, preprocess_dir, checkpoint_path, results_path, src, tgt, gen_subset='test', beam=10, nbest=1, max_len_a=1, max_len_b=50, remove_bpe=None, user_dir=None, use_Popen=True, **kwargs):
+def fairseq_generate(preprocess_dir, checkpoint_path, results_path, src, tgt, gen_subset='test', beam=10, nbest=1, max_len_a=1, max_len_b=50, remove_bpe=None, user_dir=None, use_Popen=True, **kwargs):
     additional_cmds = ''.join([f"--{k.replace('_', '-')} {v} " for k, v in kwargs.items() if not isinstance(v, bool)])
     additional_cmds += ''.join([f"--{k.replace('_', '-')} " for k, v in kwargs.items() if isinstance(v, bool) and v])
     cmd = f"fairseq-generate \
@@ -96,15 +95,9 @@ def fairseq_generate(GPUs, preprocess_dir, checkpoint_path, results_path, src, t
     if user_dir is not None:
         cmd += f'--user-dir {user_dir} '
     cmd += additional_cmds
-    if GPUs is not None:
-        cmd = 'CUDA_VISIBLE_DEVICES={}  {}'.format(GPUs, cmd)
+
     with open(results_path, 'w') as f:
-        if use_Popen:
-            return subprocess.Popen(cmd, shell=True, stdout=f)
-        else:
-            return subprocess.run(cmd, shell=True, stdout=f)
-
-
+        subprocess.run(cmd, shell=True, stdout=f)
 
 def parse_fairseq_preds(pred_path):
     #
