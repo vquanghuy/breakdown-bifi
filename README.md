@@ -41,6 +41,18 @@ The Break-It-Fix-It method is an innovative approach to unsupervised program rep
 
 I extend my gratitude to Michihiro Yasunaga and Percy Liang - the authors of the BIFI paper for their pioneering work in unsupervised program repair.
 
+```bib
+@misc{yasunaga2021breakitfixitunsupervisedlearningprogram,
+      title={Break-It-Fix-It: Unsupervised Learning for Program Repair}, 
+      author={Michihiro Yasunaga and Percy Liang},
+      year={2021},
+      eprint={2106.06600},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2106.06600}, 
+}
+```
+
 ## License
 
 This project is licensed under the MIT License.
