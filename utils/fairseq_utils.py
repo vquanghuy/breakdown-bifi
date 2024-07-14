@@ -21,7 +21,7 @@ def fairseq_preprocess(src, tgt, destdir, trainpref=None, validpref=None, testpr
     if srcdict is not None:
         cmd += f'--srcdict {srcdict} '
     cmd += additional_cmds
-    subprocess.run(shlex.split(cmd))
+    subprocess.run(cmd)
 
 def fairseq_train(preprocess_dir, save_dir, logfile, src, tgt, model='transformer',
                   criterion='label_smoothed_cross_entropy',
