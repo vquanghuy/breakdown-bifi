@@ -96,6 +96,7 @@ def fairseq_generate(preprocess_dir, checkpoint_path, results_path, src, tgt, ge
         cmd += f'--user-dir {user_dir} '
     cmd += additional_cmds
 
+    print(cmd)
     with open(results_path, 'w') as f:
         subprocess.run(cmd, shell=True, stdout=f)
 
