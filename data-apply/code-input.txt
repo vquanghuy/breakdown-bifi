@@ -1,18 +1,14 @@
-def read_file_to_string(file_path, chunk_size=1024):
-    file_contents = ""
-    with open(file_path, 'r', encoding='utf-8') as file:
-        while True:
-            chunk = file.read(chunk_size)
-            if not chunk:
-                break
-            file_contents += chunk
-    return file_contents
+def process(fn, mergefile=None, lazy=False):
+    if lazy and mergefile and os.stat(fn).st_mtime < os.stat(mergefile).st_mtime:
+        return
 
+    print(mergefile)
+    gen = Gen()
+    directives.execute(directives.load(fn), gen)
+    result = gen.generate()
 
-# Example usage:
-file_path = 'your_file.txt'  # Replace with your file path
-text = read_file_to_string(file_path)
-print(text)
-
-
-#%%
+    if mergefile is None:
+        print(result)
+    else:
+        print(f"Merging {fn} into {mergefile}")
+        result = merge(mergefile, result)
