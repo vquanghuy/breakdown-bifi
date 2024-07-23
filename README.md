@@ -1,5 +1,7 @@
 # BIFI: Jupyter Rewrite for Unsupervised Program Repair
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vquanghuy/breakdown-bifi/blob/main/Breakdown_BIFI.ipynb)
+
 This project is my reimplementation of the Break-It-Fix-It (BIFI) unsupervised program repair method introduced in the ICML 2021 paper of the same name ([https://github.com/michiyasunaga/BIFI](https://github.com/michiyasunaga/BIFI)). My primary goals are to enhance clarity and accessibility for researchers and developers interested in unsupervised learning for code repair.
 
 ## Features
