@@ -39,6 +39,16 @@ The Break-It-Fix-It method is an innovative approach to unsupervised program rep
 * **Jupyter Notebooks:**  The notebooks provide comprehensive explanations of the BIFI algorithm and offer flexibility for experimentation.
 * **Code Refactoring:**  The code has been reorganized and improved for better readability and maintainability.
 
+## Code Fixer API
+
+Navigate to the server folder and run command
+
+## For debug
+
+```bash
+flask run --port=8080 --debug
+```
+
 ## Acknowledgements
 
 I extend my gratitude to Michihiro Yasunaga and Percy Liang - the authors of the BIFI paper for their pioneering work in unsupervised program repair.
