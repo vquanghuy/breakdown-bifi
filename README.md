@@ -46,7 +46,13 @@ Navigate to the server folder and run command
 ## For debug
 
 ```bash
-flask run --port=8080 --debug
+python app.py
+```
+
+## For production
+
+```bash
+waitress-serve --port=8080 --call app:create
 ```
 
 ## Acknowledgements

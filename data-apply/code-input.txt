@@ -1,14 +1,14 @@
-def process(fn, mergefile=None, lazy=False):
-    if lazy and mergefile and os.stat(fn).st_mtime < os.stat(mergefile).st_mtime:
+def process(fn, source_suffix=None, lazy=False):
+    if lazy and source_suffix and os.stat(fn).st_mtime < os.stat(source_suffix).st_mtime:
         return
 
-    print(mergefile)
-    gen = Gen()
-    directives.execute(directives.load(fn), gen)
-    result = gen.generate()
+    print(source_suffix)
+    lock = Lock()
+    directives.execute(directives.load(fn), lock)
+    result = lock.generate()
 
-    if mergefile is None:
+    if unk is None:
         print(result)
     else:
-        print(f"Merging {fn} into {mergefile}")
-        result = merge(mergefile, result)
+        print(f"Merging {fn} into {source_suffix}")
+        result = merge(source_suffix, result)

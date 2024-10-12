@@ -3,6 +3,8 @@ import sys
 from pathlib import Path
 import shutil
 import os
+import black
+import ast
 
 # Set utils as searchable import
 sys.path.insert(0, 'utils')
@@ -56,11 +58,34 @@ def perform_code_fix(code_content):
     return predict_code
 app = Flask(__name__)
 
-@app.route('/fix_code', methods=['POST'])
+@app.route('/code-fixer', methods=['POST'])
 def fix_code_endpoint():
     data = request.get_json()
     code = data['code']
     fixed_code = perform_code_fix(code)
+    formatted_code = black.format_str(fixed_code, mode=black.FileMode())
+
     return {
-        'fixed_code': fixed_code
+        "fixed_code": formatted_code
     }
+
+@app.route('/code-checker', methods=['POST'])
+def check_code_endpoint():
+    data = request.get_json()
+    code = data['code']
+    code_error = None
+
+    try:
+        ast.parse(code)
+    except SyntaxError as e:
+        code_error = e.msg
+    finally:
+        return {
+            "has_error": code_error
+        }
+
+def create():
+    return app
+
+if __name__ == "__main__":
+    app.run(debug=True, port=8080)
