@@ -7,3 +7,6 @@ data-apply/preprocess
 data-apply/code-output.txt
 data-apply/token-input.bad
 /data-apply/bifi-model.pred.txt
+
+# Eval data
+data-eval
