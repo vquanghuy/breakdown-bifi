@@ -1,0 +1,32 @@
+data\round_1_bifi\orig_bad\fairseq_preprocess__orig_bad. model-fixer.pred.txt
+len(preds) 7528
+
+7528it [00:01, 5761.37it/s]
+
+len(preds) 7528
+
+7528it [00:01, 5734.75it/s]
+
+len(preds) 7528
+
+7528it [00:01, 5672.66it/s]
+
+len(preds) 7528
+
+7528it [00:01, 5573.60it/s]
+
+len(preds) 7527
+
+7527it [00:01, 6041.65it/s]
+
+split 3
+split 4
+Total
+   acc: 13171 (87.5%) | denom 15055
+--------------------------------------------------
+Unbalanced (){}[]
+   acc: 3757 (93.9%) | denom 3999
+Invalid syntax
+   acc: 4335 (91.3%) | denom 4749
+Indentation error
+   acc: 5079 (80.5%) | denom 6307
