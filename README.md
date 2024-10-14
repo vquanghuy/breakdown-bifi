@@ -21,8 +21,8 @@ The Break-It-Fix-It method is an innovative approach to unsupervised program rep
 
 1. **Clone the Repository:**
    ```bash
-   git clone git@github.com:vquanghuy/bifi-jupyter-rewrite.git
-   cd bifi-jupyter-rewrite
+   git clone git@github.com:vquanghuy/jupyter-bifi-adaptation.git
+   cd jupyter-bifi-adaptation
    ```
 2. **Install Dependencies:**
    ```bash
