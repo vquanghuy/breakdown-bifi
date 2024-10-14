@@ -7,7 +7,7 @@ This project is the reimplementation of the Break-It-Fix-It (BIFI) unsupervised 
 ## Features
 
 * **Jupyter Notebooks:**  The entire BIFI algorithm, including the breaker, fixer, and critic components, has been refactored into interactive Jupyter notebooks. This format facilitates a step-by-step understanding of the unsupervised learning process and encourages experimentation.
-* **PyTorch/fairseq Compatibility:** The codebase has been meticulously updated to align with the latest versions of PyTorch and the fairseq library. This modernization ensures seamless integration with the current deep learning ecosystem.
+* **PyTorch/fairseq Compatibility:** The codebase has been updated to align with the **PyTorch 2.3.1** and the **fairseq 0.12.2**.
 
 ## BIFI Overview
 
